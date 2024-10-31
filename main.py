@@ -18,9 +18,10 @@ logging.basicConfig(
 )
 
 def main():
-    # Load configurations from config.json
+    config_path = os.getenv('CONFIG_PATH', 'config.json')
+
     try:
-        with open('config.json', 'r') as config_file:
+        with open(config_path, 'r') as config_file:
             configs = json.load(config_file)
     except FileNotFoundError:
         logging.error("Configuration file 'config.json' not found.")
